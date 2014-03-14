@@ -23,7 +23,7 @@ function main(appRoot) {
 
   function loadPaths(paths) {
     var configs = paths.map(_load);
-    return configExtend.apply(null, configs)
+    return configExtend.apply(null, configs);
   }
 
   //If your package.json has "config3Paths": ["./myConfig"]

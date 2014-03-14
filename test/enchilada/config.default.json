@@ -1,0 +1,8 @@
+{
+  "fromConfigDefaultJs": "from config.default.json",
+  "fromConfigDefaultJson": "from config.default.json",
+  "fromConfigJs": "from config.default.json",
+  "fromConfigJson": "from config.default.json",
+  "fromConfigLocalJs": "from config.default.json",
+  "fromConfigLocalJson": "from config.default.json"
+}

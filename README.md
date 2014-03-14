@@ -19,21 +19,27 @@
   * `var config = require("config3");`
   * Your settings will be there.
   *  Things get merged and overridden as you would expect. Arrays get replaced. The [config-extend](https://www.npmjs.org/package/config-extend) module handles this logic for us.
+* config files are loaded with regular old `require` which looks for `.js` first and falls back to `.json` otherwise.
+  * Thus the full resolution order, first to last, with last entry winning is:
+  * `config.default.js` OR `config.default.json` (NOT both)
+  * `config.js` OR `config.json` (NOT both)
+  * `config.local.js` OR `config.local.json` (NOT both)
+  * `/etc/<package_name>/config.js` OR `/etc/<package_name>/config.json` (NOT both)
 
 # Example
 
 **<app_root>/config.json**
 
     {"port": 3000, "dbUrl": "mongodb://localhost/myapp", "fbAppId": "12345"}
-    
+
 **<app_root>/config.local.json**
 
     {"port": 4500}
-    
+
 **/etc/myapp/config.json**
 
     {"dbUrl": "mongodb://192.168.1.17/myapp-production", "fbAppId": "REAL_FB_APP_ID"}
-    
+
 
 #Motivation and Philosophy
 
@@ -42,15 +48,22 @@ There are many similar modules already written and published to the npm registry
 * poisoned by the Ruby on Rails notion of `RAILS_ENV=production` (NODE_ENV for us)
   * This whole system is flawed and an antipattern
   * The primary way this screws you is as follows:
-    * some module you depend on alters its behavior based on `NODE_ENV`. Typically this might be something like enabling a cache in `production` but disabling it otherwise. 
+    * some module you depend on alters its behavior based on `NODE_ENV`. Typically this might be something like enabling a cache in `production` but disabling it otherwise.
     * Case in point: [express.js will cache views in production only](https://github.com/visionmedia/express/blob/0719e5f402ff4b8129f19fe3d0704b31733f1190/lib/application.js#L76)
     * So you set `NODE_ENV=staging` on your staging system and use one of the npm config packages that loads a `staging.yaml` file. Now your staging server is way out of alignment with production.
   * So I think this entire notion is fundamentally the wrong way to think about configuration code that looks at `NODE_ENV` should be removed in favor of explicit options. Packages in npm should assume production-type configuration by default and should allow appropriate changes for development when passed explicit granular options to do development things like enabling source maps, disabling caches, printing debug output, etc.
 * Uses YAML configuration files.
   * YAML is just goofy and rubyish and we shouldn't be bringing it along into the node.js ecosystem. It's been involved in many of ruby's security issues. Just keep your configuration simple. If you need 30 key/value pairs or complicated data structures, paragraphs of comments and logic in your configuration, you are probably building a monolithic monster app that should be split into smaller services.
 * But what about [12 Factor Apps](http://12factor.net/)?
-  * While mostly I think the 12 factors are quite correct and excellent, when it comes to environment variables, I disagree. Flat files on the filesystem are better as per my blog post [Environment Variables Considered Harmful](http://peterlyons.com/problog/2010/02/environment-variables-considered-harmful) 
+  * While mostly I think the 12 factors are quite correct and excellent, when it comes to environment variables, I disagree. Flat files on the filesystem are better as per my blog post [Environment Variables Considered Harmful](http://peterlyons.com/problog/2010/02/environment-variables-considered-harmful)
 * You should have to read 2 or at most 3 files to figure out which values your running application has loaded, which is why I called this module `config3`
+
+# Debugging
+
+config3 uses the [debug](https://github.com/visionmedia/debug) package by TJ Holowaychuk. Normally, no debug information is output. To have debug statements written to stdout, set the DEBUG environment variable to `config3` or a colon-delimited string containing config3 like `express:config3:socket.io`.
+
+`DEBUG=config3 node myapp.js`
+
 
 #Notes on Existing Modules
 * [config](https://www.npmjs.org/package/config): NODE_ENV, yaml
