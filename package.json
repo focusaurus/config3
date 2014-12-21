@@ -1,11 +1,14 @@
 {
   "name": "config3",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Cascade config files with sensible default, local, deployed files",
   "main": "config3.js",
   "scripts": {
     "test": "mocha",
     "lint": "eslint ."
+  },
+  "bin": {
+    "config3": "./config3.js"
   },
   "repository": {
     "type": "git",
@@ -16,6 +19,7 @@
     "configuration",
     "server"
   ],
+  "files": ["config3.js"],
   "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com/)",
   "license": "MIT",
   "bugs": {
@@ -23,15 +27,16 @@
   },
   "homepage": "https://github.com/focusaurus/config3",
   "dependencies": {
-    "config-extend": "^0.0.6",
-    "debug": "^0.7.4",
+    "config-extend": "0.0.7",
+    "debug": "2.1.0",
+    "pathval": "0.1.1",
     "verror": "1.6.0"
   },
   "devDependencies": {
-    "chai": "^1.9.0",
+    "chai": "1.9.0",
     "chaimel": "1.2.0",
     "eslint": "0.10.2",
-    "mocha": "^1.17.1",
-    "rmrf": "^1.0.2"
+    "mocha": "1.17.1",
+    "rmrf": "1.0.2"
   }
 }

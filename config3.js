@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 var configExtend = require("config-extend");
 var debug = require("debug")("config3");
 var path = require("path");
@@ -63,8 +64,11 @@ if (process.env.CONFIG3_TEST) {
   module.exports = main();
 }
 
-var cliPath = process.argv[1];
+var cliPath = process.argv[2];
 if (require.main === module && cliPath) {
   var pathval = require("pathval");
-  console.log(pathval.get(module.exports, cliPath));
+  var value = pathval.get(module.exports, cliPath);
+  if (typeof value !== "undefined") {
+    console.log(value);
+  }
 }
