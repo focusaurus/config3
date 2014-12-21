@@ -1,6 +1,7 @@
-var path = require("path");
-var debug = require("debug")("config3");
 var configExtend = require("config-extend");
+var debug = require("debug")("config3");
+var path = require("path");
+var VError = require("verror");
 
 function load(appRoot, configPath) {
   configPath = path.resolve(appRoot, configPath);
@@ -10,19 +11,24 @@ function load(appRoot, configPath) {
     var config = require(configPath);
     debug("Loaded " + quotedPath);
     return config;
-  } catch (exception) {
+  } catch (error) {
     debug("Did not load " + quotedPath);
+    if (error.name === "SyntaxError") {
+      var verror = new VError(error, "Invalid config file: " + quotedPath);
+      verror.path = configPath;
+      throw verror;
+    }
   }
 }
 
 function main(appRoot) {
-  appRoot = appRoot || path.resolve(path.join(__dirname, "..", ".."));
+  appRoot = appRoot || path.resolve(path.join(__dirname, "../.."));
   debug("appRoot is '" + appRoot + "'");
-  var _load = load.bind(null, appRoot);
-  var packageJson = _load("package.json") || {};
+  var loadRoot = load.bind(null, appRoot);
+  var packageJson = loadRoot("package.json") || {};
 
   function loadPaths(paths) {
-    var configs = paths.map(_load);
+    var configs = paths.map(loadRoot);
     return configExtend.apply(null, configs);
   }
 
@@ -35,7 +41,7 @@ function main(appRoot) {
   //If your package.json has "config3Paths": "./myConfig"
   //then we just load that single path
   if (typeof packageJson.config3Paths === "string") {
-    return _load(packageJson.config3Paths);
+    return loadRoot(packageJson.config3Paths);
   }
 
   //Default and recommended fallback paths for sane people
@@ -55,4 +61,10 @@ if (process.env.CONFIG3_TEST) {
   module.exports = main;
 } else {
   module.exports = main();
+}
+
+var cliPath = process.argv[1];
+if (require.main === module && cliPath) {
+  var pathval = require("pathval");
+  console.log(pathval.get(module.exports, cliPath));
 }
