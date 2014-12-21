@@ -4,7 +4,8 @@
   "description": "Cascade config files with sensible default, local, deployed files",
   "main": "config3.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "chai": "^1.9.0",
     "chaimel": "1.2.0",
+    "eslint": "0.10.2",
     "mocha": "^1.17.1",
     "rmrf": "^1.0.2"
   }
