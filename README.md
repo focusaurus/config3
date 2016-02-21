@@ -99,6 +99,8 @@ config3 uses the [debug](https://github.com/visionmedia/debug) package by TJ Hol
 - [express-config](https://www.npmjs.org/package/express-config) NODE_ENV. package.json incomplete.
 - ...patience ran out
 
+[![Build Status](https://semaphoreci.com/api/v1/focusaurus/config3/branches/master/badge.svg)](https://semaphoreci.com/focusaurus/config3)
+
 [![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 # MIT License
