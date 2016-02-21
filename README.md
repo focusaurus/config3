@@ -15,7 +15,7 @@
 - For deployment, put your configuration overrides in `/etc/<package_name>/config.js`
   - `<package_name>` is your npm package name from your project's `package.json` file
   - `/etc/<package_name>/config.json` will also work
-  - Don't store these in git. This is where you secrets like API keys, database credentials, etc go
+  - Don't store these in git. This is where your secrets like API keys, database credentials, etc go
 - In any code that needs configuration, just load it
   - `var config = require("config3");`
   - Your settings will be there.
