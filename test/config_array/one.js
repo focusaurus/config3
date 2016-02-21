@@ -1,2 +1,2 @@
-exports.one = 1;
-exports.two = "two";
+exports.one = 1
+exports.two = 'two'
