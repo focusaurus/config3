@@ -19,7 +19,9 @@
     "configuration",
     "server"
   ],
-  "files": ["config3.js"],
+  "files": [
+    "config3.js"
+  ],
   "author": "Peter Lyons <pete@peterlyons.com> (http://peterlyons.com/)",
   "license": "MIT",
   "bugs": {
@@ -27,16 +29,16 @@
   },
   "homepage": "https://github.com/focusaurus/config3",
   "dependencies": {
-    "config-extend": "0.0.7",
-    "debug": "2.1.0",
+    "config-extend": "0.1.0",
+    "debug": "2.2.0",
     "pathval": "0.1.1",
-    "verror": "1.6.0"
+    "verror": "1.6.1"
   },
   "devDependencies": {
-    "chai": "1.9.0",
-    "chaimel": "1.2.0",
-    "eslint": "0.10.2",
-    "mocha": "1.17.1",
+    "chai": "3.5.0",
+    "chaimel": "3.0.0",
+    "eslint": "2.2.0",
+    "mocha": "2.4.5",
     "rmrf": "1.0.2"
   }
 }
