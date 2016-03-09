@@ -1,6 +1,6 @@
-#config3 - Get Your Settings, Minus Insanity
+# config3 - Get Your Settings, Minus Insanity
 
-# How to Use It
+## How to Use It
 
 - Define your default configuration in `<app_root>/config.default.js`
   - This should be a CommonJS module that exports an object which is your application's config values.
@@ -27,7 +27,7 @@
   - `config.local.js` OR `config.local.json` (NOT both)
   - `/etc/<package_name>/config.js` OR `/etc/<package_name>/config.json` (NOT both)
 
-# Example
+## Example
 
 **<app_root>/config.json**
 
@@ -41,7 +41,7 @@
 
     {"dbUrl": "mongodb://192.168.1.17/myapp-production", "fbAppId": "REAL_FB_APP_ID"}
 
-# Getting values with the CLI
+## Getting values with the CLI
 
 This module comes with a command line program also called `config3` that takes a property path as the only argument and prints out the corresponding value from your application's configuration. This supports property path notation al la `db.connection.poolSize` via the `pathval` npm package.
 
@@ -71,14 +71,14 @@ There are many similar modules already written and published to the npm registry
   - While mostly I think the 12 factors are quite correct and excellent, when it comes to environment variables, I disagree. Flat files on the filesystem are better as per my blog post [Environment Variables Considered Harmful](http://peterlyons.com/problog/2010/02/environment-variables-considered-harmful)
 - You should have to read 2 or at most 3 files to figure out which values your running application has loaded, which is why I called this module `config3`
 
-# Debugging
+## Debugging
 
 config3 uses the [debug](https://github.com/visionmedia/debug) package by TJ Holowaychuk. Normally, no debug information is output. To have debug statements written to stdout, set the DEBUG environment variable to `config3` or a colon-delimited string containing config3 like `express:config3:socket.io`.
 
 `DEBUG=config3 node myapp.js`
 
 
-#Notes on Existing Modules
+## Notes on Existing Modules
 - [config](https://www.npmjs.org/package/config): NODE_ENV, yaml
 - [global-config](https://www.npmjs.org/package/global-config): name says it all. Creates global variables. Fail.
 - [config-env](https://www.npmjs.org/package/config-env) Do we really need a JS API to define some key/value pairs?
@@ -100,10 +100,9 @@ config3 uses the [debug](https://github.com/visionmedia/debug) package by TJ Hol
 - ...patience ran out
 
 [![Build Status](https://semaphoreci.com/api/v1/focusaurus/config3/branches/master/badge.svg)](https://semaphoreci.com/focusaurus/config3)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
-
-# MIT License
+## MIT License
 Copyright (c) 2016 Peter Lyons LLC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
