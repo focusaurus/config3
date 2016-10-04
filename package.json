@@ -1,6 +1,6 @@
 {
   "name": "config3",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cascade config files with sensible default, local, deployed files",
   "main": "./config3.js",
   "scripts": {
