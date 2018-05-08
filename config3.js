@@ -45,7 +45,7 @@ function main (appRoot) {
     return loadRoot(packageJson.config3Paths)
   }
 
-  // Default and recommended fallback paths for sane people
+  // Default and recommended fallback paths for fans of simplicity
   // read config.default, config, config.local, /etc/packagename/config
   var defaultPaths = [
     'config.default',

@@ -28,18 +28,18 @@
   "homepage": "https://github.com/focusaurus/config3",
   "dependencies": {
     "config-extend": "0.1.0",
-    "debug": "2.2.0",
+    "debug": "^3.1.0",
     "pathval": "0.1.1",
     "verror": "1.8.1"
   },
   "devDependencies": {
     "chai": "3.5.0",
     "chaimel": "3.0.0",
-    "eslint": "3.7.1",
+    "eslint": "^4.19.1",
     "eslint-config-standard": "6.2.0",
     "eslint-plugin-standard": "2.0.1",
-    "mocha": "3.1.0",
+    "mocha": "^5.1.1",
     "rmrf": "1.0.2",
-    "standard-version": "2.4.0"
+    "standard-version": "^4.3.0"
   }
 }
