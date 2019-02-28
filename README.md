@@ -100,4 +100,3 @@ config3 uses the [debug](https://github.com/visionmedia/debug) package by TJ Hol
 - ...patience ran out
 
 [![Build Status](https://semaphoreci.com/api/v1/focusaurus/config3/branches/master/badge.svg)](https://semaphoreci.com/focusaurus/config3)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
