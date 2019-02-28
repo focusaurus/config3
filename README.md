@@ -1,4 +1,4 @@
-# config3 - Get Your Settings, Minus Insanity
+# config3 - Get Your Settings, No Bananas 
 
 ## How to Use It
 
