@@ -4,8 +4,9 @@
   "description": "Cascade config files with sensible default, local, deployed files",
   "main": "./config3.js",
   "scripts": {
-    "test": "mocha",
-    "lint": "eslint ."
+    "test": "tap **/*-tap.js",
+    "lint": "eslint .",
+    "release": "standard-version"
   },
   "bin": "./config3.js",
   "repository": {
@@ -27,19 +28,19 @@
   },
   "homepage": "https://github.com/focusaurus/config3",
   "dependencies": {
-    "config-extend": "0.1.0",
-    "debug": "^3.1.0",
-    "pathval": "0.1.1",
-    "verror": "1.8.1"
+    "config-extend": "0.1.1",
+    "debug": "^4.1.1",
+    "pathval": "1.1.0",
+    "verror": "1.10.0"
   },
   "devDependencies": {
-    "chai": "3.5.0",
-    "chaimel": "3.0.0",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "6.2.0",
-    "eslint-plugin-standard": "2.0.1",
-    "mocha": "^5.1.1",
-    "rmrf": "1.0.2",
-    "standard-version": "^4.3.0"
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "rmrf": "2.0.0",
+    "standard-version": "^5.0.1",
+    "tap": "^12.5.3"
   }
 }
